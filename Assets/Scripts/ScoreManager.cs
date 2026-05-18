@@ -35,4 +35,14 @@ public class ScoreManager : MonoBehaviour
 
         scoreText?.SetText($"Puntaje: {totalScore}\nMultiplicador: {multiplier}x");
     }
+
+    public void WhiteBallPocketed()
+    {
+        totalScore -= 100;
+        consecutiveBalls = 0;
+
+        Debug.Log("¡Bola blanca en el hoyo!");
+
+        scoreText?.SetText($"Puntaje: {totalScore}\nMultiplicador: 0x");
+    }
 }

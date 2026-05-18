@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class BallShooter : MonoBehaviour
 {
+    public static BallShooter Instance;
     public Rigidbody whiteBalls;
     public Camera mainCamera;
 
@@ -11,10 +12,26 @@ public class BallShooter : MonoBehaviour
 
     public Image powerBarFill;
 
+    public Transform spawnPoint;
+
     private float currentPower = 0f;
     private float chargeStartTime = 0f;
     private bool isCharging = false;
     private Vector3 hitDirection;
+
+
+    void Awake()
+    {
+        Instance = this;
+        spawnPoint.position = whiteBalls.position;
+    }
+
+    public void ResetWhiteBall()
+    {
+        whiteBalls.velocity = Vector3.zero;
+        whiteBalls.angularVelocity = Vector3.zero;
+        whiteBalls.transform.position = spawnPoint.position;
+    }
 
     void Update()
     {
