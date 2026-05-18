@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class BallShooter : MonoBehaviour
 {
     public static BallShooter Instance;
-    public Rigidbody whiteBalls;
+    public Rigidbody whiteBall;
     public Camera mainCamera;
 
     public float MaxForce = 15f;
@@ -23,14 +23,14 @@ public class BallShooter : MonoBehaviour
     void Awake()
     {
         Instance = this;
-        spawnPoint.position = whiteBalls.position;
+        spawnPoint.position = whiteBall.position;
     }
 
     public void ResetWhiteBall()
     {
-        whiteBalls.velocity = Vector3.zero;
-        whiteBalls.angularVelocity = Vector3.zero;
-        whiteBalls.transform.position = spawnPoint.position;
+        whiteBall.velocity = Vector3.zero;
+        whiteBall.angularVelocity = Vector3.zero;
+        whiteBall.transform.position = spawnPoint.position;
     }
 
     void Update()
@@ -50,11 +50,14 @@ public class BallShooter : MonoBehaviour
 
     void TryStartCharge()
     {
+        
+        if (whiteBall.velocity.magnitude > 0.05f) return;
+
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         if (!Physics.Raycast(ray, out RaycastHit hit)) return;
-        if (hit.rigidbody != whiteBalls) return;
+        if (hit.rigidbody != whiteBall) return;
 
-        hitDirection = (whiteBalls.position - hit.point).normalized;
+        hitDirection = (whiteBall.position - hit.point).normalized;
         hitDirection.y = 0f;
         chargeStartTime = Time.time;
         isCharging = true;
@@ -64,7 +67,7 @@ public class BallShooter : MonoBehaviour
 
     void Shoot()
     {
-        whiteBalls.AddForce(hitDirection * currentPower, ForceMode.Impulse);
+        whiteBall.AddForce(hitDirection * currentPower, ForceMode.Impulse);
         isCharging = false;
         currentPower = 0f;
         ScoreManager.Instance.OnShotFired();

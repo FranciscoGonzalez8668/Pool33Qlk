@@ -736,7 +736,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 110, y: -30}
+  m_AnchoredPosition: {x: 156, y: -54.9}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &456731653
@@ -759,7 +759,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Dumpy
+  m_text: 'Puntaje: 0
+
+    Multiplicador: 1x'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
@@ -802,7 +804,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -881,11 +883,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 813cdba54dac73a418dab677b9774f4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  whiteBalls: {fileID: 3035834}
+  whiteBall: {fileID: 3035834}
   mainCamera: {fileID: 963194227}
   MaxForce: 50
   chargeSpeed: 25
   powerBarFill: {fileID: 737832653}
+  spawnPoint: {fileID: 1519101388}
 --- !u!114 &471574017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1016,8 +1019,8 @@ GameObject:
   - component: {fileID: 554253609}
   - component: {fileID: 554253613}
   m_Layer: 0
-  m_Name: Sphere (11)
-  m_TagString: Untagged
+  m_Name: BlackBall
+  m_TagString: BlackBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1242,6 +1245,7 @@ GameObject:
   - component: {fileID: 611001711}
   - component: {fileID: 611001710}
   - component: {fileID: 611001709}
+  - component: {fileID: 611001712}
   m_Layer: 0
   m_Name: Hole (2)
   m_TagString: Hole
@@ -1328,6 +1332,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 611001707}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &611001712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611001707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 629afdad564e2d744a61840c29cd6161, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &653488472
 GameObject:
   m_ObjectHideFlags: 0
@@ -1454,6 +1470,7 @@ GameObject:
   - component: {fileID: 681981052}
   - component: {fileID: 681981051}
   - component: {fileID: 681981050}
+  - component: {fileID: 681981053}
   m_Layer: 0
   m_Name: Hole (1)
   m_TagString: Hole
@@ -1540,6 +1557,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 681981048}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &681981053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681981048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 629afdad564e2d744a61840c29cd6161, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1646,6 +1675,7 @@ GameObject:
   - component: {fileID: 716081111}
   - component: {fileID: 716081110}
   - component: {fileID: 716081109}
+  - component: {fileID: 716081112}
   m_Layer: 0
   m_Name: Hole (2)
   m_TagString: Hole
@@ -1732,6 +1762,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 716081107}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &716081112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 716081107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 629afdad564e2d744a61840c29cd6161, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &737832652
 GameObject:
   m_ObjectHideFlags: 0
@@ -2227,14 +2269,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0.12058238, y: 0.6967485, z: -0.12058269, w: 0.6967505}
+  m_LocalPosition: {x: -12.24, y: 3.63, z: -0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 19.637, y: 90, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3086,6 +3128,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1519101387
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1519101388}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1519101388
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1519101387}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7, y: 0.25, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 22
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1560301807
 GameObject:
   m_ObjectHideFlags: 0
@@ -3098,6 +3171,7 @@ GameObject:
   - component: {fileID: 1560301811}
   - component: {fileID: 1560301810}
   - component: {fileID: 1560301809}
+  - component: {fileID: 1560301812}
   m_Layer: 0
   m_Name: Hole (3)
   m_TagString: Hole
@@ -3184,6 +3258,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1560301807}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1560301812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1560301807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 629afdad564e2d744a61840c29cd6161, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1676422338
 GameObject:
   m_ObjectHideFlags: 0
@@ -3196,6 +3282,7 @@ GameObject:
   - component: {fileID: 1676422342}
   - component: {fileID: 1676422341}
   - component: {fileID: 1676422340}
+  - component: {fileID: 1676422343}
   m_Layer: 0
   m_Name: Hole (4)
   m_TagString: Hole
@@ -3282,6 +3369,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1676422338}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1676422343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1676422338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 629afdad564e2d744a61840c29cd6161, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1730653142
 GameObject:
   m_ObjectHideFlags: 0
@@ -8334,6 +8433,7 @@ GameObject:
   - component: {fileID: 2004782767}
   - component: {fileID: 2004782766}
   - component: {fileID: 2004782765}
+  - component: {fileID: 2004782768}
   m_Layer: 0
   m_Name: Hole
   m_TagString: Hole
@@ -8420,6 +8520,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2004782763}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2004782768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004782763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 629afdad564e2d744a61840c29cd6161, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2020617288
 GameObject:
   m_ObjectHideFlags: 0

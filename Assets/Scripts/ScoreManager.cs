@@ -45,4 +45,14 @@ public class ScoreManager : MonoBehaviour
 
         scoreText?.SetText($"Puntaje: {totalScore}\nMultiplicador: 0x");
     }
+
+    public void ResetScore()
+    {
+        totalScore = 0;
+        consecutiveBalls = 0;
+
+        Debug.Log("¡Bola negra en el hoyo! Puntaje reiniciado.");
+
+        scoreText?.SetText($"Puntaje: {totalScore}\nMultiplicador: 0x");
+    }
 }
