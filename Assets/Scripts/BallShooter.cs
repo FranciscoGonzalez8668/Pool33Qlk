@@ -11,6 +11,8 @@ public class BallShooter : MonoBehaviour
     public float chargeSpeed = 1.5f;
 
     public Image powerBarFill;
+    public LineRenderer aimLine;
+    public float aimLineLength = 2f;
 
     public Transform spawnPoint;
 
@@ -37,6 +39,8 @@ public class BallShooter : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
             TryStartCharge();
+
+        UpdateAimLine();
 
         if (isCharging)
         {
@@ -73,6 +77,27 @@ public class BallShooter : MonoBehaviour
         ScoreManager.Instance.OnShotFired();
 
         powerBarFill?.gameObject.SetActive(false);
+        if (aimLine != null) aimLine.enabled = false;
+    }
+
+    void UpdateAimLine()
+    {
+        if (aimLine == null) return;
+        if (whiteBall.velocity.magnitude > 0.05f) { aimLine.enabled = false; return; }
+
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        if (!Physics.Raycast(ray, out RaycastHit hit) || hit.rigidbody != whiteBall)
+        {
+            aimLine.enabled = false;
+            return;
+        }
+
+        Vector3 dir = (whiteBall.position - hit.point).normalized;
+        dir.y = 0f;
+
+        aimLine.enabled = true;
+        aimLine.SetPosition(0, whiteBall.position);
+        aimLine.SetPosition(1, whiteBall.position + dir * aimLineLength);
     }
 
     void UpdatePowerBar()
