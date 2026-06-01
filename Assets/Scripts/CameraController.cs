@@ -4,7 +4,9 @@ public class CameraController : MonoBehaviour
 {
     public Transform whiteBall;
 
+    [Range(10f,200f)]
     public float rotateSpeed = 80f;
+    [Range(1f,10f)]
     public float zoomSpeed = 3f;
     public float minDistance = 2f;
     public float maxDistance = 15f;
@@ -44,6 +46,16 @@ public class CameraController : MonoBehaviour
 
         transform.position = whiteBall.position + offset;
         transform.LookAt(whiteBall);
+    }
+
+
+    void OnDrawGizmos()
+    {
+        if(whiteBall ==null)return;
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(transform.position, whiteBall.position);
+        Gizmos.DrawWireSphere(whiteBall.position, 0.5f);
     }
 
 }

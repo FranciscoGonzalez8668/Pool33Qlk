@@ -85,6 +85,14 @@ public class BallShooter : MonoBehaviour
         if (aimLine == null) return;
         if (whiteBall.velocity.magnitude > 0.05f) { aimLine.enabled = false; return; }
 
+        if (isCharging)
+        {
+            aimLine.enabled = true;
+            aimLine.SetPosition(0, whiteBall.position);
+            aimLine.SetPosition(1, whiteBall.position + hitDirection * aimLineLength);
+            return;
+        }
+
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         if (!Physics.Raycast(ray, out RaycastHit hit) || hit.rigidbody != whiteBall)
         {
@@ -107,4 +115,23 @@ public class BallShooter : MonoBehaviour
         powerBarFill.fillAmount = t;
         powerBarFill.color = Color.Lerp(Color.green, Color.red, t);
     }
+
+    void OnDrawGizmos()
+    {
+        if (whiteBall == null || hitDirection == Vector3.zero) return;
+
+        Gizmos.color = Color.cyan;
+
+        if (Physics.Raycast(whiteBall.position, hitDirection, out RaycastHit hit))
+        {
+            Gizmos.DrawLine(whiteBall.position, hit.point);
+            Gizmos.DrawWireSphere(hit.point, 0.15f);
+        }
+        else
+        {
+            Gizmos.DrawLine(whiteBall.position, whiteBall.position + hitDirection * aimLineLength);
+            Gizmos.DrawWireSphere(whiteBall.position + hitDirection * aimLineLength, 0.1f);
+        }
+    }
+
 }

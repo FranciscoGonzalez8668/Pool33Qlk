@@ -3,6 +3,9 @@ using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
+
+    [ShotPower(1000f)]
+    public float maxScore = 500f;
     public static ScoreManager Instance;
 
     [SerializeField] private TMP_Text scoreText;

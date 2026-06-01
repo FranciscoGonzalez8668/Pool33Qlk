@@ -34,4 +34,12 @@ public class HoleTrigger : MonoBehaviour
         GameObject vfx = Instantiate(pocketParticlesPrefab, position, Quaternion.identity);
         Destroy(vfx, 1f);
     }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        CapsuleCollider cc = GetComponent<CapsuleCollider>();
+        if (cc != null)
+            Gizmos.DrawWireSphere(transform.position + cc.center, cc.radius * transform.lossyScale.x);
+    }
 }

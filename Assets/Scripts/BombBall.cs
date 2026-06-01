@@ -2,7 +2,10 @@ using UnityEngine;
 
 public class BombBall : MonoBehaviour
 {
+    [ExplosionStat(0f, 1000f, 700f)]
     public float explosionForce = 500f;
+
+    [ExplosionStat(0f,10f,7f)]
     public float explosionRadius = 3f;
     public ParticleSystem explosionParticles;
 
